@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @newspaper.title %>
+</p>
+
+<p>
+  <b>Link:</b>
+  <%= @newspaper.link %>
+</p>
+
+<p>
+  <b>Pubdate:</b>
+  <%= @newspaper.pubDate %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @newspaper.description %>
+</p>
+
+<p>
+  <b>Publisher:</b>
+  <%= @newspaper.publisher %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @newspaper.category %>
+</p>
+
+
+<%= link_to 'Edit', edit_newspaper_path(@newspaper) %> |
+<%= link_to 'Back', newspapers_path %>

@@ -1,0 +1,28 @@
+<h1>Listing newspapers</h1>
+<%= paginate @newspapers %>
+
+<% @newspapers.each do |newspaper| %>
+  <table class="table table-stripped">
+  <tr>
+    <th>Title</th><td><%=  newspaper.title.gsub(/[&#39;]/, '') %></td>
+  </tr>
+  <tr>
+    <th>Date</th><td><%= newspaper.pubDate.gsub(/\.\d\d\d\d\d\d/, '') %></td>
+  </tr>
+  <tr>
+    <th>link</th><td><%= link_to '기사 읽기...', newspaper.link %></td>
+  </tr>
+  <tr>
+    <th>publisher</th><td><%= newspaper.publisher.gsub(/[&#39;]/, '') %></td>
+  </tr>
+  <tr>
+    <th>Description</th><td><%= newspaper.description.gsub(/[&#39;]/, '') %></td>
+  </tr>
+  </table>
+  <% if user_signed_in? %>
+   <%= button_to '스크랩', clips_path(newspaper: newspaper), class: 'btn btn-mini' %>
+  <% end %>
+
+<% end %>
+
+<br />

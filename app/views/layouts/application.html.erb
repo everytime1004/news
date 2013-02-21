@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>News</title>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="">뉴스 친구</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+          	<li><%= link_to '전체',  newspapers_path(category: 'all') %></li>
+		        <li><%= link_to '정치',  newspapers_path(category: 'politics') %></li>
+            <li><%= link_to '경제',  newspapers_path(category: 'economics') %></li>
+            <li><%= link_to '국제',  newspapers_path(category: 'international') %></li>
+            <li><%= link_to '사회',  newspapers_path(category: 'society') %></li>
+            <li><%= link_to '스포츠,문화,연예', newspapers_path(category: 'culture') %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+
+	<% if user_signed_in? %>
+		   
+		Logged in as <strong><%= current_user.email %> </strong> 
+		<p>
+		<%= link_to '내 뉴스클립', clips_path %> |
+		<%= link_to '프로필 수정', edit_user_registration_path %> |
+		<%= link_to '로그아웃', destroy_user_session_path, method: :delete %>
+	<% else %>
+		<%= link_to "회원가입", new_user_registration_path %> |
+		<%= link_to '로그인', new_user_session_path %>
+	<% end %>
+
+
+	<%= yield %>
+</div>
+</body>
+</html>

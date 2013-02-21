@@ -1,0 +1,31 @@
+<%= form_for(@clip) do |f| %>
+  <% if @clip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@clip.errors.count, "error") %> prohibited this clip from being saved:</h2>
+
+      <ul>
+      <% @clip.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table class="table table-striped">
+    <tr><th>타이틀</th><td><%= Newspaper.find(@clip_newspaper).title %></td></tr>
+    <tr><th>날짜</th><td><%= Newspaper.find(@clip_newspaper).pubDate %></td></tr>
+    <tr><th>링크</th><td><%= Newspaper.find(@clip_newspaper).link %></td></tr>
+    <tr><th>신문사</th><td><%= Newspaper.find(@clip_newspaper).publisher %></td></tr>
+    <tr><th>내용</th><td><%= Newspaper.find(@clip_newspaper).description %></td></tr>
+  </table>
+  
+  <div class="control-group">
+    <%= f.label :memo, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :memo, class: 'text_area'%>
+    </div
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

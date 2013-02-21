@@ -1,0 +1,30 @@
+<h1>Listing clips</h1>
+
+<table>
+<% @clips.each do |clip| %>
+  <tr>
+    <th>제목</th><td><%= Newspaper.find(clip.newspaper_id).title %></td>
+  </tr>
+  <tr>
+     <th>날짜</th><td><%= Newspaper.find(clip.newspaper_id).pubDate %></td>
+  </tr>
+  <tr>
+    <th>신문사</th><td><%= Newspaper.find(clip.newspaper_id).publisher %></td>
+  </tr>
+  <tr>
+    <th>링크</th><td><%= Newspaper.find(clip.newspaper_id).link %></td>
+  </tr>
+  <tr>
+    <th>내용</th><td><%= Newspaper.find(clip.newspaper_id).description %></td>
+  </tr>
+  <tr>
+    <th>메모</th><td><%= clip.memo %></td>
+  </tr>
+    <td><%= link_to 'Edit', edit_clip_path(clip) %></td>
+    <td><%= link_to 'Destroy', clip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
